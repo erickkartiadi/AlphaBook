@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="{{asset("css/style.css")}}">
     <title>Document</title>
 </head>
+
 <body>
     <div class="container-fluid p-0">
         <nav class="d-flex justify-content-between shadow-sm flex-wrap">
@@ -39,27 +41,30 @@
                     <h4 class="font-title mb-0">Books</h4>
                     <a href="#">See All</a>
                 </div>
-                <div class="books d-flex overflow-auto">
-                    @foreach($books as $book)
-                    <div class="book-card">
-                        <div class="book-cover shadow-sm w-100 rounded overflow-hidden">
-                            <img
-                            class=""
-                            src="{{$book->image_url}}" >
+                <div class="position-relative">
+                    <div id="books" onclick="test()" class="books d-flex overflow-auto" >
+                        @foreach($books as $book)
+                        <div class="book-card">
+                            <div class="book-cover shadow-sm w-100 rounded overflow-hidden">
+                                <img class="" src="{{$book->image_url}}">
+                            </div>
+                            <div class="card-content mt-3 mb-2">
+                                <h4 class="font-weight-normal m-0">
+                                    {{$book->title}}
+                                </h4>
+                                <p class="text-black-50">
+                                    {{$book->author}}
+                                </p>
+                            </div>
                         </div>
-                        <div class="card-content mt-3 mb-2">
-                            <h4 class="font-weight-normal m-0">
-                                {{$book->title}}
-                            </h4>
-                            <p class="text-black-50">
-                                {{$book->author}}
-                            </p>
-                        </div>
+                        @endforeach
                     </div>
-                    @endforeach
+                    {{-- TODO center the button with absolute positioning --}}
+                    <div class="scroller d-flex justify-content-between align-items-center">
+                        <button onclick="slide('books', 'right', 230)">prev</button>
+                        <button onclick="slide('books', 'left', 230)">next</button>
+                    </div>
                 </div>
-                {{-- <button id="slide-prev">prev</button>
-                <button id="slide-next">next</button> --}}
             </div>
             <div class="mb-5">
                 <div class="mb-4 d-flex justify-content-between align-items-center">
@@ -70,9 +75,7 @@
                     @foreach($books as $book)
                     <div class="author-card">
                         <div class="w-100 author-photo rounded-circle overflow-hidden">
-                            <img
-                            src=
-                            "https://picsum.photos/id/@php echo rand(1, 1000)@endphp/100/100" alt="">
+                            <img src="https://picsum.photos/id/@php echo rand(1, 1000)@endphp/100/100" alt="">
                         </div>
 
                         <h6 class="text-center text-black-50 mb-0 mt-3">
@@ -86,7 +89,19 @@
     </div>
 </body>
 <script>
-    // let slide-prev = document.getElementById("slide-prev");
-    // let slide-next = document.getElementById("slide")
+    function slide(element, direction, step) {
+        let destination = direction === "left" ? +step : -step;
+
+        document.getElementById(element).scrollBy({
+            left: destination,
+            behavior: 'smooth'
+        })
+    }
+
+    function test(){
+        console.log("tes");
+    }
+
 </script>
+
 </html>
