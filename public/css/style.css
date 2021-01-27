@@ -8,14 +8,45 @@ body {
     font-family: 'Domine', serif;
 }
 
+.material-icons {
+    margin-top: -3px;
+}
+
 nav {
     padding: 15px;
 }
 
-nav>a.nav-brand {
+nav .nav-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav .nav-brand {
     color: black;
-    cursor: pointer;
     text-decoration: none;
+    cursor: pointer;
+}
+
+ul.nav-menu > li.nav-item {
+    display: inline;
+}
+
+li.nav-item > a {
+    box-sizing: border-box;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    color: rgba(0, 0, 0, .6);
+    text-decoration: none;
+}
+
+li.nav-item > a > * {
+    vertical-align: middle;
+}
+
+li.nav-item > a:hover {
+    color: rgba(0, 0, 0, 0.8);
 }
 
 .bg-light-gray {
@@ -24,7 +55,16 @@ nav>a.nav-brand {
 
 .search-form {
     border-radius: 40px;
-    padding: 12.5px 20px;
+    padding: 8px 20px;
+    display: inline;
+}
+
+.search-form > * {
+    vertical-align: middle;
+}
+
+button.search-button > i.material-icons {
+    padding-top: 10px;
 }
 
 .search-input {
@@ -43,7 +83,7 @@ nav>a.nav-brand {
 }
 
 .search-button {
-    padding: 0;
+    padding: 00;
     border: none;
     background: none;
     outline: none;
@@ -110,14 +150,14 @@ div.book-cover>img {
 
 .slider-button > button > i {
     font-size: 52px;
-    color: rgba(255, 255, 255, .6);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: rgb(255, 255, 255, .85);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     transition: all .3s;
 }
 
 .slider-button>button:hover > i {
-    color: rgba(255, 255, 255, .8);
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
+    color: rgb(255, 255, 255, .9);
+    text-shadow: 2px 2px 3px rgba(0,0,0, 0.4);
 }
 
 
@@ -126,3 +166,10 @@ div.book-cover>img {
     opacity: 1;
 }
 
+.book_cover_image {
+    width: 300px;
+}
+
+.author_profile_image {
+    width: 200px;
+}
