@@ -17,7 +17,7 @@
 <div class="mb-5">
     <div class="mb-4 d-flex justify-content-between align-items-center">
         <h4 class="font-title mb-0">Books</h4>
-        <a href="#">See All</a>
+        <a href="/books">See All</a>
     </div>
     <div class="position-relative slider">
         <div id="books" class="slider-content books d-flex overflow-auto">
