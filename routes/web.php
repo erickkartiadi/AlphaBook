@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,7 @@ use App\Http\Controllers\BookController;
 |
 */
 
-Route::get("/", [BookController::class, 'index']);
-Route::get("/book/add", [BookController::class, 'create']);
+Route::get("/", [Controller::class, 'index']);
+Route::get("/books", [BookController::class, 'index']);
 Route::post("/book", [BookController::class, 'store']);
+Route::get("/book/add", [BookController::class, 'create']);

@@ -18,10 +18,10 @@ class BookSeeder extends Seeder
         $genres = ['crime', 'dictionary', 'hobbies', 'business', 'classic', 'mystery', 'fantasy', 'action and adventure', 'horror', 'romance', 'sci-fi', 'biographies and autobiographies', 'history', 'self-help'];
 
         $faker = Faker::create();
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 40; $i++) {
             DB::table('books')->insert([
                 'title' => $faker->word(rand(1, 3)),
-                'genres' => $faker->randomElement($genres),
+                'genre' => $faker->randomElement($genres),
                 'author' => $faker->name(),
                 'total_pages' => $faker->numberBetween(100, 3000),
                 'published_year' => $faker->numberBetween(2000, 2021),

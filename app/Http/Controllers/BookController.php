@@ -15,11 +15,8 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
-
-
-        return view("index")
-            ->with('books', $books)
-            ->with('genres', Book::distinct()->get('genre'));
+        return view("book.books")
+            ->with("books", $books);
     }
 
     /**
@@ -29,7 +26,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view("add_book");
+        return view("book.add_book");
     }
 
     /**
@@ -53,7 +50,7 @@ class BookController extends Controller
         $request->book_image->move(public_path('images'), $image_name);
         $book->image_url = "/images/" . $image_name;
         $book->save();
-        return redirect("/");
+        return redirect("/books");
     }
 
     /**
