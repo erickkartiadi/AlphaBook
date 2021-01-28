@@ -19,7 +19,7 @@ class BookController extends Controller
 
         return view("index")
             ->with('books', $books)
-            ->with('genres', Book::distinct()->get('genres'));
+            ->with('genres', Book::distinct()->get('genre'));
     }
 
     /**
@@ -40,7 +40,20 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $book = new Book();
+        $book->title = $request->title;
+        $book->genre = $request->genre;
+        $book->total_pages = $request->total_pages;
+        $book->published_year = $request->published_year;
+        $book->author = $request->author;
+
+        // image upload
+        $image_name = str_replace(' ', '', $book->title) . "_" . time() . "." . $request->book_image->extension();
+        $request->book_image->move(public_path('images'), $image_name);
+        $book->image_url = "/images/" . $image_name;
+        $book->save();
+        return redirect("/");
     }
 
     /**

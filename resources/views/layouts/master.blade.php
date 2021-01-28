@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset("css/app.css")}}">
     <link rel="stylesheet" href="{{asset("css/style.css")}}">
+
     <title>Document</title>
 </head>
 
@@ -33,8 +34,5 @@
         </div>
     </div>
 </body>
-
-@yield('js_script')
-
-
+<script src="{{asset("js/script.js")}}"></script>
 </html>

@@ -1,21 +1,24 @@
 @extends("layouts.master")
 
-
 @section("content")
-
-<form>
-    <div class="container-fluid p-0">
-        <div class="row m-0">
-            <div class="col-6">
+<div class="container p-0 mt-3">
+    <h1 class="mb-4">Add Book</h1>
+    <form action="/book" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="d-flex">
+            <div class="pr-4">
                 <div class="form-group">
                     <div class="book_cover_image rounded overflow-hidden shadow-sm">
                         <img id="book_cover" class="w-100 h-100" src="https://picsum.photos/200/300">
                     </div>
                     <div class="mt-3">
                         <label for="book_image_url">Book cover</label>
-                        <input type="file" class="form-control-file" id="book_image_url" name="book_image_url" onchange="previewImage(this, 'book_cover')">
+                        <input type="file" class="form-control-file" id="book_image_url" name="book_image"
+                            onchange="previewImage(this, 'book_cover')">
                     </div>
                 </div>
+            </div>
+            <div class="flex-grow-1 ">
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input class="form-control" type="text" id="title" name="title">
@@ -32,37 +35,15 @@
                     <label for="published_year">Published year</label>
                     <input type="text" class="form-control" id="publised_year" name="published_year">
                 </div>
-            </div>
-            <div class="col-6">
-                <div class="form-group">
-                    <div class="rounded-circle overflow-hidden author_profile_image shadow-sm">
-                        <img id="author_profile" src="https://picsum.photos/200">
-                    </div>
-                    <div class="mt-3">
-                        <label for="book_image_url">Author profile</label>
-                        <input type="file" class="form-control-file" id="book_image_url" name="book_image_url" onchange="previewImage(this, 'author_profile')">
-                    </div>
-                </div>
                 <div class="form-group">
                     <label for="author">Author</label>
-                    <input type="text" class="form-control" name="author">
+                    <input type="text" class="form-control" id="author" name="author">
+                </div>
+                <div class="form-group text-right">
+                    <button class="btn btn-success">Save</button>
                 </div>
             </div>
         </div>
-    </div>
-</form>
-
-@endsection
-
-
-@section("js_script")
-    <script>
-        function previewImage(input, target) {
-            let reader = new FileReader();
-            reader.readAsDataURL(input.files[0]);
-            reader.onload = function(readerEvent) {
-                document.getElementById(target).src = readerEvent.target.result;
-            }
-        }
-    </script>
+    </form>
+</div>
 @endsection

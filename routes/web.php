@@ -16,3 +16,4 @@ use App\Http\Controllers\BookController;
 
 Route::get("/", [BookController::class, 'index']);
 Route::get("/book/add", [BookController::class, 'create']);
+Route::post("/book", [BookController::class, 'store']);
